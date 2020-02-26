@@ -44,5 +44,5 @@ def intcheck(question, low, high):
 
 # main routine goes here
 
-how_much = intcheck("How much mondey do you want to play with? ", 1, 10)
+how_much = intcheck("How much money do you want to play with? ", 1, 10)
 

@@ -20,6 +20,7 @@ def intcheck(question, low, high):
                 print()
         except ValueError:
             print(error)
+            print()
 
 # welcoming
 print("=" * 10)
@@ -36,21 +37,6 @@ print("=" * 10)
 print("This game is all about gambling. ")
 print("Each round will reward or detriment your total balance - ")
 print("depending on which 'token' you receive.")
-print("These are the following tokens")
-print("(along with how much money they will reward ")
-print("you with/take away):")
-
-# token descriptions
-
-print("=" * 10)
-
-print("A ***Unicorn*** token will reward you with: $10, ")
-print("A **Zebra** or **Horse** token will reward you with 50¢, ")
-print("- however, you spend $1 to play each round so ")
-print("you actually lose 50¢, ")
-print("Finally, a *Donkey* token will take $1 away from you.")
-
-print("=" * 10)
 
 print()
 
@@ -77,11 +63,13 @@ print("-" * 10)
 keep_going = ""
 while keep_going == "":
 
-    # tokens list includes 10 items to prevent too many unicorns being chosen
+    # tokens list includes 16 items to prevent too many unicorns being chosen
 
     tokens = ["Horse", "Horse", "Horse",
               "Zebra", "Zebra", "Zebra",
               "Donkey", "Donkey", "Donkey",
+              "Donkey", "Zebra", "Horse",
+              "Donkey", "Zebra", "Horse",
               "Unicorn"]
 
     # randomly choose a token from our list above
@@ -102,8 +90,8 @@ while keep_going == "":
     # Adjust total correctly for a given token
 
     if token == "Unicorn":
-        balance += 10    # wins $5
-        feedback = "Congratulations! You won $10.00!"
+        balance += 5    # wins $5
+        feedback = "Congratulations! You won $5.00!"
     elif token == "Donkey":
         balance -= 1    # doesn't win anything (ie: loses $1)
         feedback = "Sorry, you did not win anything this round."
