@@ -37,7 +37,7 @@ print("=" * 10)
 print("This game is all about gambling. ")
 print("Each round will reward or detriment your total balance - ")
 print("depending on which 'token' you receive.")
-
+print("=" * 10)
 print()
 
 print("=" * 10)
