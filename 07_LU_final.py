@@ -22,12 +22,18 @@ def intcheck(question, low, high):
             print(error)
             print()
 
+# Function adds line above and below statement with 'decoration' character
+# so that users can easily see what they have won
+def statement_generator (statement, decoration):
+    print(decoration * len(statement))
+    print(statement)
+    print(decoration * len(statement))
+    
+
+# Main routine goes here...
+
 # welcoming
-print("=" * 10)
-
-print("Welcome to the ***Lucky Unicorn*** Game!")
-
-print("=" * 10)
+statement_generator("Welcome to the ***Lucky Unicorn*** Game!", "=")
 
 # instructions
 
@@ -48,7 +54,6 @@ print("=" * 10)
 
 print()
 
-# Main routine
 
 # Ask user how much money they want to play with (min $1, max $10)
 
@@ -80,37 +85,31 @@ while keep_going == "":
 
     print("=" * 10)
 
-    if token == "Unicorn":
-        print("You got a **{}**!".format(token))
-    else:
-        print("You got a {}!".format(token))
-
-    print()
 
     # Adjust total correctly for a given token
 
     if token == "Unicorn":
         balance += 5    # wins $5
-        feedback = "Congratulations! You won $5.00!"
+        feedback = "Congratulations.  You got a Unicorn! You won $5.00!"
+        decoration = "*"
     elif token == "Donkey":
         balance -= 1    # doesn't win anything (ie: loses $1)
-        feedback = "Sorry, you did not win anything this round."
+        feedback = "Sorry, you got a donkey and lost $1.00."
+        decoration = "!"
     else:
         balance -= 0.5  # 'wins' 50c, paid $1 so loses 50c overall
-        feedback = "Sadly, you lost 50¢."
+        feedback = "Sorry,  you got a {} and lost 50¢.".format(token)
+        decoration = "#"
 
-    print(feedback)
-    print("=" * 10)
+    round_feedback = feedback + "You have ${:.2f} left to play with.".format(balance)
+    
+    statement_generator(round_feedback, decoration)
     print()
-    print("=" * 10)
-    print("You have ${} left to play with.".format(balance))
-    print("=" * 10)
-    print()
-
+    
     # If user has enough money to play, ask if they want to play again...
 
     if balance < 1:
-        print("Sorry, you do not have enough money to continue. Game over!")
+        statement_generator("Sorry, you do not have enough money to continue. Game over!", "@")
         keep_going = "end"
     else:
         keep_going = input("Press <enter> to play again or any key to quit. ")
@@ -118,6 +117,6 @@ while keep_going == "":
 # farewell user at the end of game.
 print("=" * 10)
 
-print("Thank you for playing. You went home with ${}".format(balance))
+print("Thank you for playing. You went home with ${:.2f}".format(balance))
 
 print("=" * 10)
